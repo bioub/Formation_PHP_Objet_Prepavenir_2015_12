@@ -82,6 +82,16 @@ $film->addCritique($critique);
             </tr>
             <tr>
                 <th>Avec</th>
+<!--                <td>
+                    <?php $premierActeur = true; ?>
+                    <?php foreach($film->getActeurs() as $act) : ?>
+                      <?php if (!$premierActeur) :?>
+                        ,
+                      <?php endif; ?>
+                      <?php $premierActeur = false; ?>
+                      <?=$act->getPrenom()?> <?=$act->getNom()?>
+                    <?php endforeach; ?>
+                </td>-->
                 <td><?=implode(', ', $film->getActeurs())?></td>
             </tr>
         </table>

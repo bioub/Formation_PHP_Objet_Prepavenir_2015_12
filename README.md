@@ -158,3 +158,25 @@ class Societe
 	
 Dans Symfony (Doctrine) les associations sont nommées OneToOne, ManyToOne (la plus répandue), OneToMany (l'inverse de ManyToOne), ManyToMany.
 
+## MySQL
+
+Un Système de Gestion de Bases de Données Relationnelles (SGBDR) comme MySQL (ou Oracle, PostgreSQL, SQL Server, Access, Filemaker, DB2) permet de stocker des gros volumes de données tout en restant performant.
+
+On peut se représenter les données sous la forme d'un tableau, mais contrairement à Excel par exemple les données ne sont pas stocké à une position précise (Excel : ligne 3 colonne B).
+
+Parallèle avec Excel
+
+| MySQL  | Excel |
+| ------------- | ------------- |
+| SGBDR  | Tableur  |
+| Base de données  | Fichier (Classeur)  |
+| Table  | Onglet (Feuille Calcul)  |
+| Colonne  | Colonne  |
+| Enregistrement  | Ligne  |
+| SQL  | ~ Formule  |
+| Clé primaire  | Numéro Ligne  |
+| Clé étrangère  | Lien vers un onglet  |
+| Index  |   |
+| Déclencheur  |   |
+| Procédures stockées  |   |
+
