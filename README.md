@@ -96,55 +96,61 @@ Dans une classe si on a besoin de faire le lien vers une autre.
 
 Soit il y a un seul objet possible dans le lien (ex : 1 contact lié à 1 société), c'est une simple variable
 
-  class Contact
+	<?php
+	class Contact
 	{
-	  protected $prenom;
-	  protected $nom;
-	  protected $email;
-	  protected $telephone;
-	
-	  /**
-	   *
-	   * @var Societe 
-	   */
-	  protected $societe;
-	   
-	  public function getSociete()
-    {
-      return $this->societe;
-    }
-     
-    public function setSociete(Societe $societe)
-    {
-      $this->societe = $societe;
-      return $this;
-    }
-	  // autres getters/setters et autres ...
+		protected $prenom;
+		protected $nom;
+		protected $email;
+		protected $telephone;
+		
+		/**
+		 *
+		 * @var Societe 
+		 */
+		protected $societe;
+		
+		public function getSociete()
+		{
+			return $this->societe;
+		}
+		
+		public function setSociete(Societe $societe)
+		{
+			$this->societe = $societe;
+			return $this;
+		}
+		
+		// getters/setters et autres ...
 	}
 
 Soit il y a plusieurs objets possibles dans le lien (ex : plusieurs contact dans 1 société), c'est une variable de type tableau.
 
+	<?php
 	class Societe
 	{
-	
-	  protected $nom;
-	  protected $ville;
-	    
-	  /**
-	   *
-	   * @var Contact[]
-	   */
-	  protected $contact = [];
-	    
-	  public function getContacts()
-    {
-      return $this->contacts;
-    }
-
-    public function addContact(Contact $contact)
-    {
-      // ajoute à la fin du tableau
-      $this->contacts[] = $contact;
-    }
+		protected $nom;
+		protected $ville;
+		
+		/**
+		 *
+		 * @var Contact[]
+		 */
+		protected $contact = [];
+		
+		public function getContacts()
+		{
+			return $this->contacts;
+		}
+		
+		public function addContact(Contact $contact)
+		{
+			// ajoute à la fin du tableau
+			$this->contacts[] = $contact;
+		}
+		
+		// getters/setters
 	}
 	
+Dans Symfony (Doctrine) les associations sont nommées OneToOne, ManyToOne (la plus répandue), OneToMany (l'inverse de ManyToOne), ManyToMany.
+
