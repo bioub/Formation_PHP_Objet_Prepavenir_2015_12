@@ -6,6 +6,12 @@ class Societe
     protected $nom;
     protected $ville;
 
+    /**
+     *
+     * @var Contact[]
+     */
+    protected $contacts = [];
+
     public function getNom()
     {
         return $this->nom;
@@ -28,4 +34,14 @@ class Societe
         return $this;
     }
 
+    public function getContacts()
+    {
+        return $this->contacts;
+    }
+
+    public function addContact(Contact $contact)
+    {
+        // ajoute à la fin du tableau
+        $this->contacts[] = $contact;
+    }
 }
