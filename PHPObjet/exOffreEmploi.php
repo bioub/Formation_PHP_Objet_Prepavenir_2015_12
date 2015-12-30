@@ -1,10 +1,18 @@
 <?php
 /*
  * Exercice :
+ * 1/ Créer les classes
  * Créer la classe OffreEmploi (titre, datePublication, annonce)
- * Lier la classe OffreEmploi à la classe Société (côté OffreEmploi)
  * Créer la classe Candidat (prenom, nom)
+ * 
+ * 2/ Lier les classes
+ * Lier la classe OffreEmploi à la classe Société (côté OffreEmploi)
  * Lier la classe OffreEmploi à la classe Candidat (côté OffreEmploi)
+ * 
+ * 3/ Instancier les classes avec des données exemples
+ * ex : $emploi = new Emploi()...
+ * 
+ * 4/ Remplacer le HTML
  */
 ?>
 <!DOCTYPE html>
