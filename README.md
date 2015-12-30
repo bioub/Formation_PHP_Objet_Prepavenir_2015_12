@@ -139,7 +139,7 @@ class Societe
 	 *
 	 * @var Contact[]
 	 */
-	protected $contact = [];
+	protected $contacts = [];
 	
 	public function getContacts()
 	{
