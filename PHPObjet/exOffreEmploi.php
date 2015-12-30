@@ -14,6 +14,30 @@
  * 
  * 4/ Remplacer le HTML
  */
+
+require_once './classes/Prepavenir/Entity/Candidat.php';
+require_once './classes/Prepavenir/Entity/Societe.php';
+require_once './classes/Prepavenir/Entity/OffreEmploi.php';
+
+$offreEmploi = new OffreEmploi();
+$offreEmploi->setTitre('Développeur Symfony')
+            ->setDatePublication('28 décembre 2015')
+            ->setAnnonce('Recherche développeur...');
+
+$societe = new Societe();
+$societe->setNom('Sensio Labs')
+        ->setVille('Clichy');
+$offreEmploi->setSociete($societe);
+
+$candidat = new Candidat();
+$candidat->setPrenom('Romain')
+        ->setNom('Bohdanowicz');
+$offreEmploi->addCandidat($candidat);
+
+$candidat = new Candidat();
+$candidat->setPrenom('Fradeli')
+        ->setNom('Moke');
+$offreEmploi->addCandidat($candidat);
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,14 +46,15 @@
         <title>Offres emploi</title>
     </head>
     <body>
-        <h2>Développeur PHP H/F</h2>
-        <p>Google</p>
-        <p>22 déc. 2015</p>
-        <p>C2iS est une agence web spécialisée dans les domaines de l'e-tourisme et de l'immobilier. En tant que développeur junior, vous intégrez l'équipe back-end C2iS afin de participer aux développements des dispositifs web réalisés par l'agence. Encadré par un un Lead Developer, vous intervenez sur des projets PHP basés sur des technologies Symfony2. Vous intégrez les processus de développement et de déploiement de l'équipe de développement avec la validation du Lead Developer du projet.</p>
+        <h2><?=$offreEmploi->getTitre()?></h2>
+        <p><?=$offreEmploi->getSociete()->getNom()?></p>
+        <p><?=$offreEmploi->getDatePublication()?></p>
+        <p><?=$offreEmploi->getAnnonce()?></p>
         <h3>Liste des candidats :</h3>
         <ul>
-            <li>Eric Martin</li>
-            <li>Paul Dupont</li>
+            <?php foreach($offreEmploi->getCandidats() as $cand) : ?>
+            <li><?=$cand->getPrenom()?> <?=$cand->getNom()?></li>
+            <?php endforeach; ?>
         </ul>
     </body>
 </html>

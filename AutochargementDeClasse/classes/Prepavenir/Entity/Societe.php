@@ -1,5 +1,7 @@
 <?php
 
+namespace Prepavenir\Entity;
+
 class Societe
 {
 
