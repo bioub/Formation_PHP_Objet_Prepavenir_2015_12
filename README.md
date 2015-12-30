@@ -175,7 +175,7 @@ Un Système de Gestion de Bases de Données Relationnelles (SGBDR) comme MySQL (
 
 On peut se représenter les données sous la forme d'un tableau, mais contrairement à Excel par exemple les données ne sont pas stocké à une position précise (Excel : ligne 3 colonne B).
 
-Parallèle avec Excel
+### Parallèle avec Excel
 
 | MySQL  | Excel |
 | ------------- | ------------- |
@@ -191,3 +191,110 @@ Parallèle avec Excel
 | Déclencheur  |   |
 | Procédures stockées  |   |
 
+### SQL
+
+Langage qui permet de communiquer avec une base de données relationnelle.
+
+#### Insertion
+
+```SQL
+INSERT INTO nom_table (nom_colonne, nom_autre_colonne)
+VALUES ('Valeur de la col 1', 'Val col 2')
+```
+
+#### Lecture
+
+Récupérer tous les enregistrements
+
+```
+SELECT nom_colonne, nom_autre_colonne
+FROM nom_table
+```
+
+On peut aussi écrire toutes les colonnes avec * (déconseillé dans le code PHP)
+
+```
+SELECT *
+FROM nom_table
+```
+
+Pour trier on ajoute une clause ORDER BY
+
+```
+SELECT nom_colonne, nom_autre_colonne
+FROM nom_table
+ORDER BY nom_colonne
+```
+
+On peut aussi trier de manière décroissante
+
+```
+SELECT nom_colonne, nom_autre_colonne
+FROM nom_table
+ORDER BY nom_colonne DESC
+```
+
+On peut aussi trier avec plusieurs critères
+
+```
+SELECT nom_colonne, nom_autre_colonne
+FROM nom_table
+ORDER BY nom_colonne, nom_autre_colonne
+```
+
+Pour limiter le nombre d'enregistrement on utilise la clause LIMIT (attention LIMIT n'est pas standard, ex n'existe pas sous ORACLE)
+
+```
+SELECT nom_colonne, nom_autre_colonne
+FROM nom_table
+LIMIT nb_enregistrement
+```
+
+Bonne pratique : toujours mettre une clause LIMIT (en production pas de LIMIT peut faire tomber un serveur)
+
+On peut cumuler avec les autres clause :
+
+```
+SELECT nom_colonne, nom_autre_colonne
+FROM nom_table
+ORDER BY nom_colonne
+LIMIT nb_enregistrement
+```
+
+On peut aussi ajouter un décalage :
+```
+SELECT nom_colonne, nom_autre_colonne
+FROM nom_table
+LIMIT nb_enregistrement, decalage
+```
+
+Ex : On veut la page 3 de voiture (10 enregistrements à partir du 20e)
+```
+SELECT marque, modele
+FROM voiture
+LIMIT 10, 20
+```
+
+Filtrer par critères
+```
+SELECT nom_colonne, nom_autre_colonne
+FROM nom_table
+WHERE criteres
+```
+
+Ex : toutes les voitures de marques Renault
+```
+SELECT marque, modele
+FROM voiture
+WHERE marque = 'Renault'
+```
+
+Il existe plein d'opérateurs :
+
+* `=`
+* `!=` ou `<>`
+* `>`, `>=`, `<`, `<=`
+* `BETWEEN valeur AND autre_valeur`
+* `LIKE 'R*'` (tout ce qui commence par R)
+
+L'ordre est important : SELECT, FROM, WHERE, ORDER BY, LIMIT
