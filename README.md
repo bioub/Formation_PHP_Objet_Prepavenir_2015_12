@@ -309,6 +309,35 @@ ORDER BY modele
 LIMIT 10
 ```
 
+#### Suppression
+
+```SQL
+DELETE FROM nom_table
+WHERE criteres
+```
+
+Ex :
+```SQL
+DELETE FROM voiture
+WHERE id = 3
+```
+
+#### Modification
+
+```SQL
+UPDATE nom_table
+SET nom_colonne = 'nouvelle valeur', nom_autre_colonne = 'autre valeur'
+WHERE criteres
+```
+
+Ex :
+```SQL
+UPDATE voiture
+SET marque = 'Renault'
+WHERE id = 1
+```
+
+
 ## Sécurité des Applications Web
 
 De manière, toutes les données qui sont extérieures à votre application (extérieures aux fichiers PHP) peuvent présenter un risque.

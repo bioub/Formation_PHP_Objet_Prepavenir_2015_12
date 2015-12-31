@@ -1,4 +1,8 @@
 <?php
+
+use Prepavenir\Mapper\VoitureMapper;
+require_once './includes/autoload.php';
+
 // Lister des enregistrement d'une base de données
 
 // 1 - Se connecter à la base de données
@@ -8,20 +12,11 @@ $password = '';
 $pdo = new PDO($dsn, $username, $password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// 2 - Ecrire la requête SQL (SELECT ...)
-$sql = "SELECT marque, modele "
-     . "FROM voiture "
-     . "ORDER BY marque, modele "
-     . "LIMIT 100";
+// 2 - Demande les données au Modèle (mapper)
+$mapper = new VoitureMapper($pdo);
+$result = $mapper->findAll();
 
-// 3 - Exécuter la requête
-$stmt = $pdo->query($sql);
-
-// 4 - Rappatrier les résultats
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-var_dump($result);
-
-// 5 - Afficher les données dans la vue (HTML)
+// 3 - Afficher les données dans la Vue (HTML)
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,8 +30,8 @@ var_dump($result);
             
             <?php foreach($result as $voiture) : ?>
             <li>
-                <?=htmlspecialchars($voiture['marque'])?>
-                <?=htmlspecialchars($voiture['modele'])?>
+                <?=htmlspecialchars($voiture->getMarque())?>
+                <?=htmlspecialchars($voiture->getModele())?>
             </li>
             <?php endforeach; ?>
         </ul>
