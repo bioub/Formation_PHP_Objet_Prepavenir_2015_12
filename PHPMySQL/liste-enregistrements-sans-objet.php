@@ -31,6 +31,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <body>
         <h2>Liste des voitures</h2>
         <ul>
+            
             <?php foreach($result as $voiture) : ?>
             <li>
                 <?=htmlspecialchars($voiture['marque'])?>
