@@ -19,7 +19,6 @@ $stmt = $pdo->query($sql);
 
 // 4 - Rappatrier les résultats
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-var_dump($result);
 
 // 5 - Afficher les données dans la vue (HTML)
 ?>
