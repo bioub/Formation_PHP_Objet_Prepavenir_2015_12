@@ -298,3 +298,13 @@ Il existe plein d'opérateurs :
 * `LIKE 'R*'` (tout ce qui commence par R)
 
 L'ordre est important : SELECT, FROM, WHERE, ORDER BY, LIMIT
+
+Au final :
+
+```SQL
+SELECT marque, modele
+FROM voiture
+WHERE marque = 'Renault'
+ORDER BY modele
+LIMIT 10
+```
