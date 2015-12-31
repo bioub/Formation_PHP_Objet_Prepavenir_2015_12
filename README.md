@@ -206,21 +206,21 @@ VALUES ('Valeur de la col 1', 'Val col 2')
 
 Récupérer tous les enregistrements
 
-```
+```SQL
 SELECT nom_colonne, nom_autre_colonne
 FROM nom_table
 ```
 
 On peut aussi écrire toutes les colonnes avec * (déconseillé dans le code PHP)
 
-```
+```SQL
 SELECT *
 FROM nom_table
 ```
 
 Pour trier on ajoute une clause ORDER BY
 
-```
+```SQL
 SELECT nom_colonne, nom_autre_colonne
 FROM nom_table
 ORDER BY nom_colonne
@@ -228,7 +228,7 @@ ORDER BY nom_colonne
 
 On peut aussi trier de manière décroissante
 
-```
+```SQL
 SELECT nom_colonne, nom_autre_colonne
 FROM nom_table
 ORDER BY nom_colonne DESC
@@ -236,7 +236,7 @@ ORDER BY nom_colonne DESC
 
 On peut aussi trier avec plusieurs critères
 
-```
+```SQL
 SELECT nom_colonne, nom_autre_colonne
 FROM nom_table
 ORDER BY nom_colonne, nom_autre_colonne
@@ -244,7 +244,7 @@ ORDER BY nom_colonne, nom_autre_colonne
 
 Pour limiter le nombre d'enregistrement on utilise la clause LIMIT (attention LIMIT n'est pas standard, ex n'existe pas sous ORACLE)
 
-```
+```SQL
 SELECT nom_colonne, nom_autre_colonne
 FROM nom_table
 LIMIT nb_enregistrement
@@ -254,7 +254,7 @@ Bonne pratique : toujours mettre une clause LIMIT (en production pas de LIMIT pe
 
 On peut cumuler avec les autres clause :
 
-```
+```SQL
 SELECT nom_colonne, nom_autre_colonne
 FROM nom_table
 ORDER BY nom_colonne
@@ -262,28 +262,28 @@ LIMIT nb_enregistrement
 ```
 
 On peut aussi ajouter un décalage :
-```
+```SQL
 SELECT nom_colonne, nom_autre_colonne
 FROM nom_table
 LIMIT nb_enregistrement, decalage
 ```
 
 Ex : On veut la page 3 de voiture (10 enregistrements à partir du 20e)
-```
+```SQL
 SELECT marque, modele
 FROM voiture
 LIMIT 10, 20
 ```
 
 Filtrer par critères
-```
+```SQL
 SELECT nom_colonne, nom_autre_colonne
 FROM nom_table
 WHERE criteres
 ```
 
 Ex : toutes les voitures de marques Renault
-```
+```SQL
 SELECT marque, modele
 FROM voiture
 WHERE marque = 'Renault'
