@@ -13,5 +13,13 @@ return [
             'name' => 'slim-app',
             'path' => __DIR__ . '/../logs/app.log',
         ],
+        
+        'mysql' => [
+            'serveur' => 'localhost',
+            'base' => 'prepavenir_annonces_auto',
+            'charset' => 'UTF8',
+            'user' => 'root',
+            'pass' => ''
+        ]
     ],
 ];

@@ -54,3 +54,23 @@ La classe `\Slim\App` est la classe principale de Slim, celle qui lance l'applic
 
 `$app->run();` : jusque là on configurait, cette ligne exécute le code en fonction de la Requête HTTP (URL...)
 
+### public/.htaccess :
+
+Modifie la configuration d'Apache pour que les URL qui n'existent pas utilisent index.php (les erreurs 404 seront traitées par l'application).
+
+N'a pas d'action sur les fichiers qui n'existent pas, ex : app.css doit rester accessible via Apache.
+
+### vendor/autoload.php et vendor/composer
+
+Autoloader de composer, évite les require de classe
+
+### le reste de vendor
+
+Les dépendances du projet, ex : Slim, Monolog, Pimple...
+
+Ne jamais modifier un fichier dans vendor (en général il n'est pas versionné), peut être être supprimé, écrasé par des mises à jours...
+
+### composer.json et composer.lock
+
+Voir la [doc de composer](docs/composer.md)
+
