@@ -1,6 +1,5 @@
 <?php
 
-use Prepavenir\Mapper\VoitureMapper;
 // Routes
 
 $app->get('/', function ($request, $response) {
@@ -20,8 +19,9 @@ $app->get('/voiture/{id}', function ($request, $response) {
     
     $voiture = $this->voitureMapper->find($id);
     
-    if ($voiture) {
-        // TODO erreur 404
+    if (!$voiture) {
+        // Erreur 404
+        throw new \Slim\Exception\NotFoundException($request, $response);
     }
 
     // 3 - Afficher les données dans la Vue (HTML)
@@ -29,3 +29,4 @@ $app->get('/voiture/{id}', function ($request, $response) {
         'voiture' => $voiture
     ]);
 });
+
