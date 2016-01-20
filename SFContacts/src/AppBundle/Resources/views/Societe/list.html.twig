@@ -1,7 +1,17 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:Societe:list{% endblock %}
+{% block title %}Liste des sociétés{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Societe:list page</h1>
+<h1>Liste des sociétés</h1>
+
+<ul class="list-group">
+    
+    {% for s in societes %}
+    <li class="list-group-item">
+        <a href="{{path('app_societe_show', {id: s.id})}}">{{ s.nom }}</a>
+    </li>
+    {% endfor %}
+    
+</ul>
 {% endblock %}

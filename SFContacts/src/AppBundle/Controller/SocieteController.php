@@ -12,8 +12,12 @@ class SocieteController extends Controller
      */
     public function listAction()
     {
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Societe');
+        
+        $societes = $repo->findAll();
+        
         return $this->render('AppBundle:Societe:list.html.twig', array(
-            // ...
+            'societes' => $societes
         ));
     }
 
@@ -22,8 +26,13 @@ class SocieteController extends Controller
      */
     public function showAction($id)
     {
+        
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Societe');
+        
+        $societe = $repo->find($id);
+        
         return $this->render('AppBundle:Societe:show.html.twig', array(
-            // ...
+            'societe' => $societe
         ));
     }
 

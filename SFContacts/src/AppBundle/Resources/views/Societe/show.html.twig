@@ -1,7 +1,12 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:Societe:show{% endblock %}
+{% block title %}Détails de la société {{societe.nom}}{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Societe:show page</h1>
+<h1>Détails de la société {{societe.nom}}</h1>
+
+{% if societe.siteWeb %}
+<p>Site web : {{societe.siteWeb}}</p>
+{% endif %}
+
 {% endblock %}

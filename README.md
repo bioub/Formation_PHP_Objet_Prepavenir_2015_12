@@ -11,3 +11,4 @@
 * [Composer](docs/composer.md)
 * [Slim](docs/slim.md)
 * [Symfony](docs/symfony.md)
+* [TP Symfony](docs/tp-symfony.md)
