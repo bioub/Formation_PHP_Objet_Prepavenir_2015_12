@@ -149,6 +149,10 @@ public function showAction($id)
 }
 ```
 
+### Afficher toutes les routes
+
+	php bin/console debug:router
+
 ## Créer un domaine perso 
 
 ### 1 - Créer un faux domaine local
@@ -242,3 +246,88 @@ Ces blocks peuvent être écrasés par une vue :
 	{% block body %}
 	<h1>Welcome to the Societe:list page</h1>
 	{% endblock %}
+	
+## Doctrine
+
+Doctrine est une bibliothèque qui simplifie l'accès aux données. L'implémentation du Design Pattern Data Mapper.
+
+### Créer la base de données
+
+Si la base paramétrées dans parameters.yml n'existe pas encore on peut la créer avec la commande :
+
+	php bin/console doctrine:database:create
+
+### Créer une entité
+
+Une entité est une classe qui contient une donnée de l'application, ex : un contact.
+
+	php bin/console doctrine:generate:entity
+	
+	Welcome to the Doctrine2 entity generator  
+                                             
+
+
+	This command helps you generate Doctrine2 entities.
+	
+	First, you need to give the entity name you want to generate.
+	You must use the shortcut notation like AcmeBlogBundle:Post.
+	
+	The Entity shortcut name: AppBundle:Contact
+	
+	Determine the format to use for the mapping information.
+	
+	Configuration format (yml, xml, php, or annotation) [annotation]: 
+	
+	Instead of starting with a blank entity, you can add some fields now.
+	Note that the primary key will be added automatically (named id).
+	
+	Available types: array, simple_array, json_array, object, 
+	boolean, integer, smallint, bigint, string, text, datetime, datetimetz, 
+	date, time, decimal, float, binary, blob, guid.
+	
+	New field name (press <return> to stop adding fields): prenom
+	Field type [string]: 
+	Field length [255]: 40
+	Is nullable [false]: 
+	Unique [false]: 
+	
+	New field name (press <return> to stop adding fields): nom
+	Field type [string]: 
+	Field length [255]: 40
+	Is nullable [false]: 
+	Unique [false]: 
+	
+	New field name (press <return> to stop adding fields): email
+	Field type [string]: 
+	Field length [255]: 80
+	Is nullable [false]: true
+	Unique [false]: true
+	
+	New field name (press <return> to stop adding fields): telephone
+	Field type [string]: 
+	Field length [255]: 20
+	Is nullable [false]: true
+	Unique [false]: 
+	
+	New field name (press <return> to stop adding fields): 
+	
+	                     
+	  Entity generation  
+	                     
+	
+	> Generating entity class src/AppBundle/Entity/Contact.php: OK!
+	> Generating repository class src/AppBundle/Repository/ContactRepository.php: OK!
+	
+	                                         
+	  Everything is OK! Now get to work :).  
+                                         
+
+### Générer le code SQL
+
+Afficher le code à exécuter :
+
+	php bin/console doctrine:schema:update --dump-sql
+
+Exécuter les requêtes après vérification
+
+	php bin/console doctrine:schema:update --force

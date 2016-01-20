@@ -12,8 +12,12 @@ class ContactController extends Controller
      */
     public function listAction()
     {
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Contact');
+        
+        $contacts = $repo->findAll();
+        
         return $this->render('AppBundle:Contact:list.html.twig', array(
-            // ...
+            'contacts' => $contacts
         ));
     }
 
@@ -22,8 +26,12 @@ class ContactController extends Controller
      */
     public function showAction($id)
     {
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Contact');
+        
+        $contact = $repo->find($id);
+        
         return $this->render('AppBundle:Contact:show.html.twig', array(
-            // ...
+            'contact' => $contact
         ));
     }
 
