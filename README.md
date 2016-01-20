@@ -10,3 +10,4 @@
 * [Frameworks PHP](docs/php-frameworks.md)
 * [Composer](docs/composer.md)
 * [Slim](docs/slim.md)
+* [Symfony](docs/symfony.md)
