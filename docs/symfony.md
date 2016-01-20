@@ -131,6 +131,24 @@ Ex :
 	
 Pour obtenir des URLs plus proche de la prod (ex : `http://monsite.com/contacts`) il faut configurer Apache
 
+### Modifier les Routes
+
+Les routes sont définies sous la formes d'annotations (commentaires au dessus des méthodes actions).
+
+On peut modifier les liens par exemple.
+
+Pour ajouter une contrainte sur un paramètre, on ajoute requirements (où [1-9][0-9]* est une expressions régulières qui limite id à des entiers positifs)ex :
+
+```PHP
+/**
+ * @Route("/societes/{id}", requirements={"id": "[1-9][0-9]*"})
+ */
+public function showAction($id)
+{
+    // ...
+}
+```
+
 ## Créer un domaine perso 
 
 ### 1 - Créer un faux domaine local
@@ -190,3 +208,37 @@ Vider le cache de prod :
 	
 	php bin\console cache:clear --env=prod
 	
+## Twig
+
+Twig est un moteur de template, permet de faire le rendu des vues sans utiliser PHP, mais une syntaxe simplifiée.
+
+### Faire un lien vers une route
+
+Sans paramètre (app_contact_list étant le nom de la route):
+
+	<a href="{{ path('app_contact_list') }}">Retour à la liste</a>
+	
+Avec un paramètre ({id: 66}, remplace {id} dans l'URL par 66):
+
+	<a href="{{ path('app_contact_show', {id: 66}) }}">Afficher</a>
+	
+### HTML commun à plusieurs pages
+
+Sur un site on a souvent le même HTML qui s'affiche sur plusieurs pages (balise head, menus, bandeaux...)
+
+Au lieu de faire un `include 'header.php'` puis `include 'footer.php'` comme en PHP classique on faire l'inverse, depuis une page base.html.twig on va inclure la vue.
+
+Pour faire ça il faut hériter d'un fichier de base (Layout) (ici :: veut dire le dossier views dans app/Resources/views):
+
+	{% extends "::base.html.twig" %}
+	
+Dans ce fichier on a définit des blocks :
+
+	{% block body %}{% endblock %}
+	
+Ces blocks peuvent être écrasés par une vue :
+
+		
+	{% block body %}
+	<h1>Welcome to the Societe:list page</h1>
+	{% endblock %}
