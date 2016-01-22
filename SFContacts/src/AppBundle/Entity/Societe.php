@@ -34,7 +34,14 @@ class Societe
      * @ORM\Column(name="site_web", type="string", length=80, nullable=true)
      */
     private $siteWeb;
-
+    
+    
+/**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=80, nullable=true)
+     */
+    private $telephone;
 
     /**
      * Get id
@@ -93,5 +100,28 @@ class Societe
     {
         return $this->siteWeb;
     }
-}
 
+    /**
+     * Set telephone
+     *
+     * @param string $telephone
+     *
+     * @return Societe
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    /**
+     * Get telephone
+     *
+     * @return string
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+}

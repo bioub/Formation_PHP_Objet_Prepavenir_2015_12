@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}{{actu.titre}}{% endblock %}
+
+{% block body %}
+<h1>{{actu.titre}}</h1>
+<p>Publié le {{actu.datePub|date('d/m/Y à H:i:s')}}</p>
+
+<div>
+    {{actu.corps}}
+</div>
+    
+    <a href="{{path('app_actualite_list')}}">Retour à la liste</a>
+{% endblock %}

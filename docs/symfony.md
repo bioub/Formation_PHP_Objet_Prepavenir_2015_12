@@ -261,6 +261,13 @@ Si la base paramétrées dans parameters.yml n'existe pas encore on peut la cré
 
 Une entité est une classe qui contient une donnée de l'application, ex : un contact.
 
+On ici on choisi les noms de propriétés de notre entité, et un type de Mapping, c'est à dire un type de traduction entre PHP <-> Base de données, ex :
+
+string traduit un string PHP en VARCHAR MySQL
+
+Pour les autres types voir :
+[http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/basic-mapping.html#doctrine-mapping-types](http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/basic-mapping.html#doctrine-mapping-types)
+
 	php bin/console doctrine:generate:entity
 	
 	Welcome to the Doctrine2 entity generator  
@@ -331,3 +338,144 @@ Afficher le code à exécuter :
 Exécuter les requêtes après vérification
 
 	php bin/console doctrine:schema:update --force
+	
+## Modifier une entité
+
+Faites vos modifications dans le code et les annotations, ex:
+
+```PHP
+/**
+ * @var string
+ *
+ * @ORM\Column(name="categorie", type="string", length=20)
+ */
+private $categorie;
+```
+
+Puis générer les Getters/Setters, peut se faire avec NetBeans mais le mieux est d'utiliser la commandes suivante (qui sait créer les add...) :
+
+	php bin/console doctrine:generate:entities AppBundle
+	
+Puis mettre à jour les tables avec les commandes :
+
+	php bin/console doctrine:schema:update --dump-sql
+	
+	php bin/console doctrine:schema:update --force
+	
+### Rétrouver les objets depuis la base de données
+
+## TODO Repository
+
+## ParamConverter
+
+Si une URL contient la clé primaire, on peut faire traduire l'URL directement en objet pour le contrôleur :
+
+```PHP
+/**
+ * @Route("/actualites/{id}")
+ */
+public function showAction(\AppBundle\Entity\Actualite $actu)
+{
+    return $this->render('AppBundle:Actualite:show.html.twig', array(
+        'actu' => $actu
+    ));
+}
+```
+	
+## Bundle
+
+Un bundle est un dossier réutisable entre plusieurs projets Symfony.
+
+Idéalement quand un code (pages, fonctions, commandes...) peut être réutiliser dans différentes applications Symfony, on créé un nouveau Bundle, ex :
+
+* pages liées aux utilisateurs (inscription, connexion, déconnexion...)
+* pages et formulaires de newsletter
+* fonctions twig pour simplifier l'écriture de composants Bootstrap
+* commandes de génération de codes
+* ...
+
+### Création d'un Bundle
+
+	php bin/console generate:bundle
+	
+	
+                                            
+	Welcome to the Symfony bundle generator!  
+	                                            
+	
+	Are you planning on sharing this bundle across multiple applications? [no]: yes
+	
+	Your application code must be written in bundles. This command helps
+	you generate them easily.
+	
+	Each bundle is hosted under a namespace (like Acme/BlogBundle).
+	The namespace should begin with a "vendor" name like your company name, your
+	project name, or your client name, followed by one or more optional category
+	sub-namespaces, and it should end with the bundle name itself
+	(which must have Bundle as a suffix).
+	
+	See http://symfony.com/doc/current/cookbook/bundles/best_practices.html#bundle-name for more
+	details on bundle naming conventions.
+	
+	Use / instead of \  for the namespace delimiter to avoid any problem.
+	
+	Bundle namespace: Prepavenir\BootstrapBundle
+	
+	In your code, a bundle is often referenced by its name. It can be the
+	concatenation of all namespace parts but it's really up to you to come
+	up with a unique name (a good practice is to start with the vendor name).
+	Based on the namespace, we suggest PrepavenirBootstrapBundle.
+	
+	Bundle name [PrepavenirBootstrapBundle]: 
+	
+	Bundles are usually generated into the src/ directory. Unless you're
+	doing something custom, hit enter to keep this default!
+	
+	Target Directory [src/]: 
+	
+	What format do you want to use for your generated configuration?
+	
+	Configuration format (annotation, yml, xml, php) [xml]: annotation
+	
+	                     
+	  Bundle generation  
+	                     
+	
+	> Generating a sample bundle skeleton into src/Prepavenir/BootstrapBundle OK!
+	> Checking that the bundle is autoloaded: OK
+	> Enabling the bundle inside app/AppKernel.php: OK
+	> Importing the bundle's routes from the app/config/routing.yml file: OK
+	
+	                                         
+	  Everything is OK! Now get to work :).  
+	                                         
+	
+### Activer un bundle
+
+Il faut ajouter une ligne du genre :
+
+	new Prepavenir\BootstrapBundle\PrepavenirBootstrapBundle(),
+	
+Dans le fichier app/AppKernel.
+
+### Activer les routes (pages) d'un bundle
+
+Dans le fichiers app/config/routing.yml (dans tous les environnements dev, prod...), ou dans app/config/routing_dev.yml (que dans l'environnement de dev).
+
+	prepavenir_bootstrap:
+	  resource: "@PrepavenirBootstrapBundle/Controller/"
+	  type:     annotation
+	  prefix:   /
+	  
+### Copier le dossier public d'un bundle ou créer un lien symbolique
+
+Dans un bundle on peut créer un dossier Resources/public qui contient des fichiers à placer dans web (ex: CSS, images, JavaScript), permet de limiter le nombre de manipulation de fichier à faire, ex: BootstrapBundle contient déjà les fichiers CSS.
+
+Pour copier les fichiers :
+
+	php bin/console assets:install
+	
+Ou créer des liens symboliques (raccourcis mais que sur Mac/Linux) :
+
+	php bin/console assets:install --symlink
+	

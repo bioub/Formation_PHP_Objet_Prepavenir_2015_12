@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Liste des actualités{% endblock %}
+
+{% block body %}
+<h1>Liste des actualités</h1>
+<ul>
+    {% for actu in actualites %}
+    <li>
+        <a href="{{path('app_actualite_show', {id: actu.id})}}">
+            {{ actu.titre }} ({{actu.categorie|capitalize}})
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
