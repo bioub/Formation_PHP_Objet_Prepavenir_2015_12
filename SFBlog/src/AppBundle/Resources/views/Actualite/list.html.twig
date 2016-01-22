@@ -3,7 +3,7 @@
 {% block title %}Liste des actualités{% endblock %}
 
 {% block body %}
-<h1>Liste des actualités</h1>
+<h1>Liste des actualités{% if categorie is defined %} {{categorie|capitalize}}{% endif %}</h1>
 <ul>
     {% for actu in actualites %}
     <li>

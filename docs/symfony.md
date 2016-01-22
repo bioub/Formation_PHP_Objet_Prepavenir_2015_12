@@ -479,3 +479,14 @@ Ou créer des liens symboliques (raccourcis mais que sur Mac/Linux) :
 
 	php bin/console assets:install --symlink
 	
+
+## Récupérer un projet Symfony existant
+
+* Rappatrier les sources
+* S'il n'y pas de dossier vendor, faire un `composer install`, s'il n'y a pas non plus de parameters.yml, `composer install` vous propose de le recréer
+* Recreer si besoin le projet sous NetBeans
+  * S'il y a un dossier nbproject (File -> Open Project)
+  * Sinon (File -> New Project -> PHP with Existing Sources)
+* Recréer la base de données si besoin `php bin/console doctrine:database:create`
+* Recréer ou modifier les tables si besoins `php bin/console doctrine:schema:update --dump-sql` puis `php bin/console doctrine:schema:update --force`
+* Pour lancer le projet `php bin/console server:run` puis aller à l'adresse http://127.0.0.1:8000/ (pas besoin dans ce cas de app_dev.php car on est déjà sur un serveur de développement)

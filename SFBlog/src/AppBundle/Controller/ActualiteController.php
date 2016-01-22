@@ -30,5 +30,20 @@ class ActualiteController extends Controller
             'actu' => $actu
         ));
     }
+    
+    /**
+     * @Route("/actualites/categorie/{categorie}")
+     */
+    public function listByCategorieAction($categorie)
+    {
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Actualite');
+        
+        $dernieresActus = $repo->findBy(['categorie' => $categorie], ['datePub' => 'DESC'], 10);
+        
+        return $this->render('AppBundle:Actualite:list.html.twig', array(
+            'actualites' => $dernieresActus,
+            'categorie' => $categorie
+        ));
+    }
 
 }
