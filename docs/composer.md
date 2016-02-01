@@ -42,7 +42,7 @@ Version Majeure : changements dans l'API, modification/suppression de classes mÃ
 
 ### Exemple
 
-'''JSON
+```JSON
 {
     "require": {
         "php": ">=5.5.0",
@@ -51,7 +51,7 @@ Version Majeure : changements dans l'API, modification/suppression de classes mÃ
         "monolog/monolog": "^1.17"
     }
 }
-'''
+```
 
 `"php": ">=5.5.0"` : Au moins PHP 5.5
 
