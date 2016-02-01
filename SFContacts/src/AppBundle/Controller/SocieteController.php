@@ -39,10 +39,27 @@ class SocieteController extends Controller
     /**
      * @Route("/societes/ajouter")
      */
-    public function addAction()
+    public function addAction(\Symfony\Component\HttpFoundation\Request $request)
     {
+        $form = $this->createForm('AppBundle\Form\SocieteType');
+        // avec la complétion : 
+        // $form = $this->createForm(\AppBundle\Form\SocieteType::class)
+        
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $data = $form->getData();
+            
+            $em = $this->getDoctrine()->getEntityManager();
+            
+            $em->persist($data);
+            $em->flush();
+            
+            return $this->redirectToRoute('app_societe_list');
+        }
+        
         return $this->render('AppBundle:Societe:add.html.twig', array(
-            // ...
+            'societeForm' => $form->createView()
         ));
     }
 

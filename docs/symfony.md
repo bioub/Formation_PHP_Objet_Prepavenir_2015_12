@@ -484,9 +484,74 @@ Ou créer des liens symboliques (raccourcis mais que sur Mac/Linux) :
 
 * Rappatrier les sources
 * S'il n'y pas de dossier vendor, faire un `composer install`, s'il n'y a pas non plus de parameters.yml, `composer install` vous propose de le recréer
-* Recreer si besoin le projet sous NetBeans
+* Recréer si besoin le projet sous NetBeans
   * S'il y a un dossier nbproject (File -> Open Project)
   * Sinon (File -> New Project -> PHP with Existing Sources)
 * Recréer la base de données si besoin `php bin/console doctrine:database:create`
 * Recréer ou modifier les tables si besoins `php bin/console doctrine:schema:update --dump-sql` puis `php bin/console doctrine:schema:update --force`
 * Pour lancer le projet `php bin/console server:run` puis aller à l'adresse http://127.0.0.1:8000/ (pas besoin dans ce cas de app_dev.php car on est déjà sur un serveur de développement)
+
+## Formulaires
+
+### Générer un type de formulaire à partir d'une entité
+
+`php bin/console doctrine:generate:form AppBundle:Societe` où `AppBundle:Societe` est le nom raccourci de l'entité.
+
+### Créer et valider le formulaire dans le contrôlleur
+
+```PHP
+/**
+ * @Route("/societes/ajouter")
+ */
+public function addAction(\Symfony\Component\HttpFoundation\Request $request)
+{
+    $form = $this->createForm('AppBundle\Form\SocieteType');
+    // avec la complétion : 
+    // $form = $this->createForm(\AppBundle\Form\SocieteType::class)
+    
+    $form->handleRequest($request);
+    
+    if ($form->isValid()) {
+        $data = $form->getData();
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $em->persist($data);
+        $em->flush();
+        
+        return $this->redirectToRoute('app_societe_list');
+    }
+    
+    return $this->render('AppBundle:Societe:add.html.twig', array(
+        'societeForm' => $form->createView()
+    ));
+}
+```
+
+### Afficher le formulaire dans la vue
+
+
+```Twig
+{% extends "::base.html.twig" %}
+
+{% form_theme societeForm "bootstrap_3_layout.html.twig" %}
+
+{% block title %}Ajouter une société{% endblock %}
+
+{% block body %}
+<h1>Ajouter une société</h1>
+
+{{ form_start(societeForm) }}
+
+    {{ form_row(societeForm.nom) }}
+    {{ form_row(societeForm.siteWeb) }}
+    {{ form_row(societeForm.telephone) }}
+    
+    <div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </div>
+    
+{{ form_end(societeForm) }}
+
+{% endblock %}
+```

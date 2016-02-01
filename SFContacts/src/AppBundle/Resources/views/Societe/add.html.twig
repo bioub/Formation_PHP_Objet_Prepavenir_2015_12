@@ -1,7 +1,22 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:Societe:add{% endblock %}
+{% form_theme societeForm "bootstrap_3_layout.html.twig" %}
+
+{% block title %}Ajouter une société{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Societe:add page</h1>
+<h1>Ajouter une société</h1>
+
+{{ form_start(societeForm) }}
+
+    {{ form_row(societeForm.nom) }}
+    {{ form_row(societeForm.siteWeb) }}
+    {{ form_row(societeForm.telephone) }}
+    
+    <div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </div>
+    
+{{ form_end(societeForm) }}
+
 {% endblock %}
