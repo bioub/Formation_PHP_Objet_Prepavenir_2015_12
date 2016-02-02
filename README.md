@@ -5,6 +5,7 @@
 * [Git](docs/git.md)
 * [PHP](docs/php.md)
 * [MySQL](docs/mysql.md)
+* [Exercices Conception Mysql](docs/exercices-conception-mysql.md)
 * [PHP Objet](docs/php-objet.md)
 * [PHP Sécurité](docs/securite.md)
 * [Frameworks PHP](docs/php-frameworks.md)
