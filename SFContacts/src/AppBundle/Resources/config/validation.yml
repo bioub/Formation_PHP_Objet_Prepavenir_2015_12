@@ -1,0 +1,31 @@
+AppBundle\Entity\Societe:
+    properties:
+        nom:
+            - NotBlank:
+                message: Le nom est obligatoire
+            - Length:
+                max: 80
+                maxMessage: Le nom ne doit pas dépasser 80 caractères
+
+AppBundle\Entity\Contact:
+    properties:
+        prenom:
+            - NotBlank:
+                message: Le prénom est obligatoire
+            - Length:
+                max: 40
+                maxMessage: Le prénom ne doit pas dépasser 40 caractères
+        nom:
+            - NotBlank:
+                message: Le nom est obligatoire
+            - Length:
+                max: 40
+                maxMessage: Le nom ne doit pas dépasser 40 caractères
+        email:
+            - Email:
+                strict: true
+                checkMX: true
+                message: L'email est incorrect
+            - Length:
+                max: 80
+                maxMessage: Le nom ne doit pas dépasser 80 caractères

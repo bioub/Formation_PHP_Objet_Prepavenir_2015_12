@@ -7,7 +7,7 @@
 {% block body %}
 <h1>Ajouter une société</h1>
 
-{{ form_start(societeForm) }}
+{{ form_start(societeForm, {'attr': {'novalidate': 'novalidate'}}) }}
 
     {{ form_row(societeForm.nom) }}
     {{ form_row(societeForm.siteWeb) }}
