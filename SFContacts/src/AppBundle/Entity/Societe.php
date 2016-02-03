@@ -124,4 +124,10 @@ class Societe
     {
         return $this->telephone;
     }
+    
+    public function __toString()
+    {
+        return $this->nom;
+    }
+    
 }

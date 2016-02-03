@@ -4,8 +4,18 @@
 
 {% block body %}
 <h1>{{ contact.prenom }} {{ contact.nom }}</h1>
+
+{% if contact.email %}
 <p>Email : {{ contact.email }}</p>
+{% endif %}
+
+{% if contact.telephone %}
 <p>Téléphone : {{ contact.telephone }}</p>
+{% endif %}
+
+{% if contact.societe %}
+<p>Société : {{ contact.societe.nom }}</p>
+{% endif %}
 
 <a href="{{ path('app_contact_list') }}">Retour à la liste</a>
 {% endblock %}

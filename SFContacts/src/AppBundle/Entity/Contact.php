@@ -49,6 +49,12 @@ class Contact
      */
     private $telephone;
 
+    /**
+     * @var Societe
+     * 
+     * @ORM\ManyToOne(targetEntity="Societe", fetch="EAGER")
+     */
+    private $societe;
 
     /**
      * Get id
@@ -154,5 +160,29 @@ class Contact
     public function getTelephone()
     {
         return $this->telephone;
+    }
+
+    /**
+     * Set societe
+     *
+     * @param \AppBundle\Entity\Societe $societe
+     *
+     * @return Contact
+     */
+    public function setSociete(\AppBundle\Entity\Societe $societe = null)
+    {
+        $this->societe = $societe;
+
+        return $this;
+    }
+
+    /**
+     * Get societe
+     *
+     * @return \AppBundle\Entity\Societe
+     */
+    public function getSociete()
+    {
+        return $this->societe;
     }
 }
