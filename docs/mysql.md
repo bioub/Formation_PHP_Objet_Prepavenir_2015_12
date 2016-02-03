@@ -426,7 +426,7 @@ FROM contact, societe
 WHERE id = societe_id
 ```
 
-Car la colonne `id` existe dans les 2 tables (le problème aurait pu se poser avec la colonne `nom` si on y avait fait référence dans la requête).
+Car la colonne `id` existe dans les 2 tables (la colonne id est ambigue) (le problème aurait pu se poser avec la colonne `nom` si on y avait fait référence dans la requête).
 
 Résultat de la jointure :
 
@@ -450,3 +450,61 @@ FROM membre
 JOIN contact ON membre.id = membre_id
 JOIN societe ON societe.id = societe_id
 ```
+
+Ou plus :
+
+```SQL
+SELECT *
+FROM acteur
+JOIN film_has_acteur ON acteur.id = acteur_id
+JOIN film ON film.id = film_has_acteur.film_id
+JOIN seance ON film.id = seance.film_id
+JOIN cinema ON cinema.id = cinema_id
+```
+
+### 5/ Attention aux colonnes qui ont le même nom (ambiguous)
+
+```SQL
+SELECT prenom, contact.nom, societe.nom
+FROM contact
+JOIN societe ON societe.id = societe_id
+```
+
+On peut aliaser les noms de tables et les noms de colonnes.
+
+Noms de tables
+
+```SQL
+SELECT prenom, c.nom, s.nom
+FROM contact c
+JOIN societe s ON s.id = societe_id
+```
+
+
+| prenom | nom | nom |
+|-----|----------|-----|| Mark | Zuckerberg |	Facebook ||	Steve | Jobs | Apple |
+Problème en PHP sous la forme d'un tableau associatif ou objet :
+| prenom | nom |
+|-----|-----|| Mark | Facebook ||	Steve | Apple |
+Si tableau associatif : la clé nom de société écrase la clé nom de contact.Noms de colonnes
+
+```SQL
+SELECT prenom, c.nom, s.nom nom_societe
+FROM contact c
+JOIN societe s ON s.id = societe_id
+```
+
+Ou
+
+```SQL
+SELECT prenom, c.nom, s.nom AS nom_societe
+FROM contact c
+JOIN societe s ON s.id = societe_id
+```
+
+Résultat :
+
+| prenom | nom | nom_societe |
+|-----|----------|-----|| Mark | Zuckerberg |	Facebook ||	Steve | Jobs | Apple |
+Plus de problème en PHP.
+Doctrine gère déjà ces conflits de noms ex : `SELECT t0.id AS id_1, t0.prenom AS prenom_2, t0.nom AS nom_3, t0.email AS email_4, t0.telephone AS telephone_5 FROM contact t0`

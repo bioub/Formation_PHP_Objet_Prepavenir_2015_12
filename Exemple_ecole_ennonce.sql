@@ -1,0 +1,37 @@
+
+-- * Requete N 1: Obtenir la liste des noms, prénoms et date de naissance de tous les élèves.
+-- * Requete N 2: Obtenir tous les renseignements sur toutes les activités.
+-- * Requete N 3: Obtenir la liste des spécialités des professeurs.
+-- * Requete N 4: Obtenir le nom et le prénom des élèves pesant moins de 45 kilos et inscrits en 1ére année ou des élèves inscrits en 2ème année.
+-- * Requete N 5: Obtenir le nom des élèves dont le poids est compris entre 60 et 80 kilos.
+-- * Requete N 6: Obtenir le nom des professeurs dont la spécialité est 'cuisine' ou 'sql'.
+-- * Requete N 7: Obtenir le nom des élèves dont le nom commence par 'L'.
+-- * Requete N 8: Obtenir le nom des professeurs dont la spécialité est inconnue.
+-- * Requete N 9: Obtenir les nom et prénom des élèves pesant moins de 45 kilos et inscrits en 1ère année.
+-- * Requete N 10 : Obtenir pour chaque professeur, son nom et sa spécialité. Si cette dernière est inconnue, on souhaite afficher la chaine de caractéres : 'Spécialité inconnue'
+-- * Requete N 11 : Quels sont les noms et prénoms des élèves qui pratiquent du surf au niveau 1.
+-- * Requete N 12: Obtenir le nom des eleves de l'equipe "Equipe 1".
+-- ** Requete N 13: Obtenir les pairs de noms de professeurs qui ont la meme specialite.
+-- Requete N 14: Pour chaque professeurs, obtenir son nom son salaire mensuel actuel et son augmentation mensuelle depuis son salaire de base.
+-- Requete N 15: Obtenir le nom des professeurs dont l'augmentation relative au salaire de base depasse 25%.
+-- Requete N 16: Afficher les points de Burton obtenus dans chaque cours sur 100 plutôt que sur 20.
+-- Requete N 17: Obtenir le poids moyen des eleves de 1ere annee.
+-- Requete N 18: Obtenir le total des points de l'élève numéro 3.
+-- Requete N 19: Obtenir la plus petite et la plus grande note de l'élève Irving.
+-- Requete N 20: Obtenir le nombre d'élèves inscrits en deuxième année.
+-- Requete N 21: Quelle est l'augmentation mensuelle moyenne des salaires des professeurs de SQL ?
+-- Requete N 22: Pour chaque professeur, afficher sa date d'embauche, sa date de derniere promotion ainsi que le nombre d'années écoulées entre ces deux dates.
+-- Requete N 23: Afficher l'age moyen des eleves. Cet age moyen sera exprimé en annee.
+-- Requete N 24: Afficher le nom des professeurs pour lesquels il s'est écoulé plus de 50 mois entre l'embauche et la DERNIERE promotion.
+-- * Requete N 25: Obtenir une liste des élèves classés par année et par ordre alphabétique.
+-- Requete N 26: Afficher en ordre décroissant les points de Irving obtenus dans chaque cours sur 100 plutôt que sur 20.
+-- Requete N 27 (1 requête et 1 vue): Obtenir pour chaque élève son nom et sa moyenne.
+-- Requete N 28: Obtenir la moyenne des points de chaque élève de 1ère année dont le total des points est supérieur à 40.
+-- Requete N 29: Quels sont les élèves de 1ère année dont la moyenne est supérieure à la moyenne de la 1ère année ?
+-- Requete N 30: Obtenir le nom et le poids des élèves de 1ère année plus lourds que n'importe quel élève de 2ème année.
+-- Requete N 31: Obtenir le nom, le poids et l'année des élèves dont le poids est supérieur au poids moyen des élèves étant dans la même année d'études.
+-- Requete N 32: La note minimale, la note maximale et la moyenne des notes par cours.
+-- Requete N 33: La liste des notes de chaque élève, triée par cours et par notes, ainsi que les notes minimales, maximales et la moyenne de chaque cours
+-- Requete N 34: Obtenir le nom des professeurs qui ne donnent pas le cours numéro 1.
+-- Requete N 35 (2 méthodes): Obtenir le nom des élèves de 1ère année qui ont obtenu plus de 12 de moyenne générale et qui jouent au tennis. 
+-- Requete N 36: Elèves qui pratiquent TOUTES les activités ; on demande le Numéro et le nom.
