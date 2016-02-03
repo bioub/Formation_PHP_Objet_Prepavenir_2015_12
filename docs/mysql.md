@@ -276,7 +276,7 @@ Un membre est associé à sa fiche contact (profil), un contact peut être membr
 *Contact*
 
 | id | prenom | nom | login | pass |
-|----|-----|----------|--|--|| 1 |	Steve | Jobs | NULL | NULL |
+|----|--------|-----|-------|------|| 1 |	Steve | Jobs | NULL | NULL |
 | 2	| Bill | Gates | NULL | NULL || 4 | Mark | Zuckerberg | user | 1234 || 53 | Steve | Ballmer | NULL | NULL |
 | 100 | Romain | Bohdanowicz | admin | password |
 
@@ -324,9 +324,9 @@ Jointures, difficile à coder.
 
 *Membre*
 
-| id | login | pass | contact_id
-|----|-----|----------|--|| 12 |	admin | password | 100
-| 34 | user | 1234 | 4
+| id | login | pass | contact_id |
+|----|-------|------|------------|| 12 |	admin | password | 100 |
+| 34 | user | 1234 | 4 |
 
 ##### Avantages
 
@@ -341,8 +341,8 @@ Il faut créer le contact avant le membre
 
 *Contact*
 
-| id | prenom | nom | membre_id
-|----|-----|----------|--|| 1 |	Steve | Jobs | NULL |
+| id | prenom | nom | membre_id |
+|----|--------|-----|-----------|| 1 |	Steve | Jobs | NULL |
 | 2	| Bill | Gates | NULL || 4 | Mark | Zuckerberg | 34 || 53 | Steve | Ballmer | NULL |
 | 100 | Romain | Bohdanowicz | 12 |
 
