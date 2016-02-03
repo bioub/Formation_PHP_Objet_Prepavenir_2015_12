@@ -361,3 +361,92 @@ Membre complètement indépendant donc réutilisable et on peut bien créer le m
 ##### Inconvénients 
 
 Quelques trous en plus
+
+## SQL Jointures
+
+Une jointure est une requête SQL qui porte sur plusieurs tables.
+
+Pour y aller pas à pas on va décomposer le processus de jointure.
+
+### 1/ Produit cartésien de plusieurs tables
+
+Permet d'obtenir toutes les combinaisons entre les enregistrement de ces tables.
+
+```SQL
+SELECT *
+FROM nom_table_gauche, nom_table_droite
+```
+
+#### Exemple
+
+*Société*
+
+| id | nom | site_web |
+|----|-----|----------|| 2 |	Facebook |	www.facebook.com |
+| 5	| Apple | www.apple.com |
+*Contact*
+
+| id | prenom | nom | societe_id |
+|----|-----|----------|---------|| 1 |	Steve | Jobs | 5 |
+| 2	| Bill | Gates | 18 || 4 | Mark | Zuckerberg | 2 |
+```SQL
+SELECT *
+FROM contact, societe
+```
+
+#### Résultat :
+
+| id | prenom | nom | societe_id | id | nom | site_web |
+|----|-----|----------|---------|----|-----|----------|| 1 |	Steve | Jobs | 5 | 2 |	Facebook |	www.facebook.com |
+| 2	| Bill | Gates | 18 | 2 |	Facebook |	www.facebook.com || 4 | Mark | Zuckerberg | 2 | 2 |	Facebook |	www.facebook.com || 1 |	Steve | Jobs | 5 | 5	| Apple | www.apple.com |
+| 2	| Bill | Gates | 18 | 5	| Apple | www.apple.com || 4 | Mark | Zuckerberg | 2 | 5	| Apple | www.apple.com |
+Le résultat du produit cartésien nous donne 6 combinaisons (3 contacts * 2 sociétés).
+### 2/ Retrouver les enregistrement liés
+Dans ce résultats seuls 2 combinaisons correspondent à des enregistrement liés :
+* Mark Zuckerberg <-> Facebook
+* Steve Jobs <-> Apple
+
+Un moyen de faire une jointure est de ne conserver que ces combinaisons.
+
+Réduire le nombre de colonne se fait avec SELECT, réduire le nombre de ligne se fait avec WHERE.
+
+Exemple de jointure avec cette syntaxe (mauvaise pratique) :
+
+```SQL
+SELECT *
+FROM contact, societe
+WHERE societe.id = societe_id
+```
+
+Attention à ne pas écrire
+
+```SQL
+SELECT *
+FROM contact, societe
+WHERE id = societe_id
+```
+
+Car la colonne `id` existe dans les 2 tables (le problème aurait pu se poser avec la colonne `nom` si on y avait fait référence dans la requête).
+
+Résultat de la jointure :
+
+| id | prenom | nom | societe_id | id | nom | site_web |
+|----|-----|----------|---------|----|-----|----------|| 4 | Mark | Zuckerberg | 2 | 2 |	Facebook |	www.facebook.com || 1 |	Steve | Jobs | 5 | 5	| Apple | www.apple.com |
+### 3/ Avec la bonne syntaxe JOIN ... ON
+Comme vu précédent on peut faire des jointures avec le produit cartésien + un WHERE.
+Mais c'est la mauvaise syntaxe pour des questions de performance mais également ne permet pas de faire toutes les requêtes (exemple, si un contact n'a pas de société).
+A la place on va remplacer la virgule par `JOIN` et le `WHERE` par `ON`:
+```SQL
+SELECT *
+FROM contact
+JOIN societe ON societe.id = societe_id
+```
+
+### 4/ Avec une 3e table
+
+```SQL
+SELECT *
+FROM membre
+JOIN contact ON membre.id = membre_id
+JOIN societe ON societe.id = societe_id
+```
