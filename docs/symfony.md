@@ -555,3 +555,301 @@ public function addAction(\Symfony\Component\HttpFoundation\Request $request)
 
 {% endblock %}
 ```
+
+### Créer un projet entièrement en ligne de commande
+
+```
+Last login: Thu Feb  4 10:30:30 on console
+MBP-de-Romain:~ romain$ composer create-project symfony/framework-standard-edition ~/Desktop/SFContactsFromCLI
+You are running composer with xdebug enabled. This has a major impact on runtime performance. See https://getcomposer.org/xdebug
+Installing symfony/framework-standard-edition (v3.0.2)
+  - Installing symfony/framework-standard-edition (v3.0.2)
+    Downloading: 100%         
+
+Created project in /Users/romain/Desktop/SFContactsFromCLI
+Loading composer repositories with package information
+Installing dependencies (including require-dev) from lock file
+  - Installing doctrine/lexer (v1.0.1)
+    Loading from cache
+
+  - Installing doctrine/annotations (v1.2.7)
+    Loading from cache
+
+  - Installing twig/twig (v1.24.0)
+    Loading from cache
+
+  - Installing symfony/polyfill-util (v1.1.0)
+    Loading from cache
+
+  - Installing paragonie/random_compat (1.1.6)
+    Loading from cache
+
+  - Installing symfony/polyfill-php70 (v1.1.0)
+    Loading from cache
+
+  - Installing symfony/polyfill-php56 (v1.1.0)
+    Loading from cache
+
+  - Installing symfony/polyfill-mbstring (v1.1.0)
+    Loading from cache
+
+  - Installing symfony/symfony (v3.0.2)
+    Downloading: 100%         
+
+  - Installing symfony/polyfill-intl-icu (v1.1.0)
+    Loading from cache
+
+  - Installing psr/log (1.0.0)
+    Loading from cache
+
+  - Installing doctrine/inflector (v1.1.0)
+    Loading from cache
+
+  - Installing doctrine/collections (v1.3.0)
+    Loading from cache
+
+  - Installing doctrine/cache (v1.6.0)
+    Loading from cache
+
+  - Installing doctrine/common (v2.6.1)
+    Loading from cache
+
+  - Installing jdorn/sql-formatter (v1.2.17)
+    Loading from cache
+
+  - Installing doctrine/doctrine-cache-bundle (1.3.0)
+    Loading from cache
+
+  - Installing doctrine/dbal (v2.5.4)
+    Loading from cache
+
+  - Installing doctrine/doctrine-bundle (1.6.1)
+    Loading from cache
+
+  - Installing doctrine/instantiator (1.0.5)
+    Loading from cache
+
+  - Installing doctrine/orm (v2.5.4)
+    Loading from cache
+
+  - Installing incenteev/composer-parameter-handler (v2.1.2)
+    Loading from cache
+
+  - Installing sensiolabs/security-checker (v3.0.2)
+    Loading from cache
+
+  - Installing sensio/distribution-bundle (v5.0.3)
+    Loading from cache
+
+  - Installing sensio/framework-extra-bundle (v3.0.12)
+    Loading from cache
+
+  - Installing monolog/monolog (1.17.2)
+    Loading from cache
+
+  - Installing symfony/monolog-bundle (v2.8.2)
+    Loading from cache
+
+  - Installing swiftmailer/swiftmailer (v5.4.1)
+    Loading from cache
+
+  - Installing symfony/swiftmailer-bundle (v2.3.11)
+    Loading from cache
+
+  - Installing sensio/generator-bundle (v3.0.5)
+    Loading from cache
+
+  - Installing symfony/phpunit-bridge (v2.8.2)
+    Loading from cache
+
+paragonie/random_compat suggests installing ext-libsodium (Provides a modern crypto API that can be used to generate random bytes.)
+doctrine/doctrine-cache-bundle suggests installing symfony/security-acl (For using this bundle to cache ACLs)
+sensio/framework-extra-bundle suggests installing symfony/psr-http-message-bridge (To use the PSR-7 converters)
+monolog/monolog suggests installing aws/aws-sdk-php (Allow sending log messages to AWS services like DynamoDB)
+monolog/monolog suggests installing doctrine/couchdb (Allow sending log messages to a CouchDB server)
+monolog/monolog suggests installing ext-amqp (Allow sending log messages to an AMQP server (1.0+ required))
+monolog/monolog suggests installing ext-mongo (Allow sending log messages to a MongoDB server)
+monolog/monolog suggests installing graylog2/gelf-php (Allow sending log messages to a GrayLog2 server)
+monolog/monolog suggests installing php-console/php-console (Allow sending log messages to Google Chrome)
+monolog/monolog suggests installing raven/raven (Allow sending log messages to a Sentry server)
+monolog/monolog suggests installing rollbar/rollbar (Allow sending log messages to Rollbar)
+monolog/monolog suggests installing ruflin/elastica (Allow sending log messages to an Elastic Search server)
+monolog/monolog suggests installing videlalvaro/php-amqplib (Allow sending log messages to an AMQP server using php-amqplib)
+Generating autoload files
+> Incenteev\ParameterHandler\ScriptHandler::buildParameters
+Creating the "app/config/parameters.yml" file
+Some parameters are missing. Please provide them.
+database_host (127.0.0.1): 
+database_port (null): 
+prepavenir_addressbook_cli
+database_user (root): 
+database_password (null): 
+mailer_transport (smtp): 
+mailer_host (127.0.0.1): 
+mailer_user (null): 
+mailer_password (null): 
+secret (ThisTokenIsNotSoSecretChangeIt): C4KCN35CHKX23H5K23CH52KV5HK234HV52KHVK2H4TVKH23
+> Sensio\Bundle\DistributionBundle\Composer\ScriptHandler::buildBootstrap
+> Sensio\Bundle\DistributionBundle\Composer\ScriptHandler::clearCache
+
+ // Clearing the cache for the dev environment with debug true
+
+                                                                                                                        
+ [OK] Cache for the "dev" environment (debug=true) was successfully cleared.                                            
+                                                                                                                        
+
+> Sensio\Bundle\DistributionBundle\Composer\ScriptHandler::installAssets
+
+ Trying to install assets as relative symbolic links.
+
+ --- ----------------- ------------------ 
+      Bundle            Method / Error    
+ --- ----------------- ------------------ 
+  ✔   FrameworkBundle   relative symlink  
+ --- ----------------- ------------------ 
+
+                                                                                                                        
+ [OK] All assets were successfully installed.                                                                           
+                                                                                                                        
+
+> Sensio\Bundle\DistributionBundle\Composer\ScriptHandler::installRequirementsFile
+> Sensio\Bundle\DistributionBundle\Composer\ScriptHandler::prepareDeploymentTarget
+MBP-de-Romain:~ romain$ cd /Users/romain/Desktop/SFContactsFromCLI 
+MBP-de-Romain:SFContactsFromCLI romain$ php bin/console server:run
+
+                                                    
+ [OK] Server running on http://127.0.0.1:8000       
+                                                    
+
+ // Quit the server with CONTROL-C.
+^C
+MBP-de-Romain:SFContactsFromCLI romain$ 
+MBP-de-Romain:SFContactsFromCLI romain$ php bin/console server:start
+
+                                                    
+ [OK] Web server listening on http://127.0.0.1:8000 
+                                                    
+
+MBP-de-Romain:SFContactsFromCLI romain$ php bin/console doctrine:database:create
+Created database `prepavenir_addressbook_cli` for connection named default
+MBP-de-Romain:SFContactsFromCLI romain$ php bin/console doctrine:generate:entity
+
+                                             
+  Welcome to the Doctrine2 entity generator  
+                                             
+
+
+This command helps you generate Doctrine2 entities.
+
+First, you need to give the entity name you want to generate.
+You must use the shortcut notation like AcmeBlogBundle:Post.
+
+The Entity shortcut name: AppBundle:Contact
+
+Determine the format to use for the mapping information.
+
+Configuration format (yml, xml, php, or annotation) [annotation]: 
+
+Instead of starting with a blank entity, you can add some fields now.
+Note that the primary key will be added automatically (named id).
+
+Available types: array, simple_array, json_array, object, 
+boolean, integer, smallint, bigint, string, text, datetime, datetimetz, 
+date, time, decimal, float, binary, blob, guid.
+
+New field name (press <return> to stop adding fields): prenom
+Field type [string]: 
+Field length [255]: 40
+Is nullable [false]: 
+Unique [false]: 
+
+New field name (press <return> to stop adding fields): nom
+Field type [string]: 
+Field length [255]: 40
+Is nullable [false]: 
+Unique [false]: 
+
+New field name (press <return> to stop adding fields): email
+Field type [string]: 
+Field length [255]: 80
+Is nullable [false]: true
+Unique [false]: 
+
+New field name (press <return> to stop adding fields): telephone
+Field type [string]: 20
+ Invalid type "20". 
+Field type [string]: 
+Field length [255]: 20
+Is nullable [false]: true
+Unique [false]: 
+
+New field name (press <return> to stop adding fields): 
+
+                     
+  Entity generation  
+                     
+
+> Generating entity class src/AppBundle/Entity/Contact.php: OK!
+> Generating repository class src/AppBundle/Repository/ContactRepository.php: OK!
+
+                                         
+  Everything is OK! Now get to work :).  
+                                         
+
+MBP-de-Romain:SFContactsFromCLI romain$ php bin/console doctrine:generate:crud
+
+                                           
+  Welcome to the Doctrine2 CRUD generator  
+                                           
+
+
+This command helps you generate CRUD controllers and templates.
+
+First, give the name of the existing entity for which you want to generate a CRUD
+(use the shortcut notation like AcmeBlogBundle:Post)
+
+The Entity shortcut name: AppBundle:Contact
+
+By default, the generator creates two actions: list and show.
+You can also ask it to generate "write" actions: new, update, and delete.
+
+Do you want to generate the "write" actions [no]? yes
+
+Determine the format to use for the generated CRUD.
+
+Configuration format (yml, xml, php, or annotation) [annotation]: 
+
+Determine the routes prefix (all the routes will be "mounted" under this
+prefix: /prefix/, /prefix/new, ...).
+
+Routes prefix [/contact]: /contacts
+
+                             
+  Summary before generation  
+                             
+
+You are going to generate a CRUD controller for "AppBundle:Contact"
+using the "annotation" format.
+
+Do you confirm generation [yes]? 
+
+                   
+  CRUD generation  
+                   
+
+Generating the CRUD code: OK
+Generating the Form code: OK
+Updating the routing: OK
+
+                                         
+  Everything is OK! Now get to work :).  
+                                         
+
+MBP-de-Romain:SFContactsFromCLI romain$ php bin/console doctrine:schema:update --dump-sql
+CREATE TABLE contact (id INT AUTO_INCREMENT NOT NULL, prenom VARCHAR(40) NOT NULL, nom VARCHAR(40) NOT NULL, email VARCHAR(80) DEFAULT NULL, telephone VARCHAR(20) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB;
+MBP-de-Romain:SFContactsFromCLI romain$ php bin/console doctrine:schema:update --force
+Updating database schema...
+Database schema updated successfully! "1" query was executed
+MBP-de-Romain:SFContactsFromCLI romain$ 
+
+```
